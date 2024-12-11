@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NRB shop</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(to right, #ffecd2, #fcb69f);
+            color: #333;
+        }
+
+        header {
+            background-color: rgba(255, 140, 0, 0.9);
+            padding: 20px;
+            text-align: center;
+            color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        header h1 {
+            margin-bottom: 10px;
+            font-size: 36px;
+            font-family: 'Courier New', Courier, monospace;
+        }
+          nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+        nav a:hover {
+            text-align: center;
+            text-decoration: underline;
+        }
+
+   .login-container, .payment-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            background-image: url('https://via.placeholder.com/1500x900');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-box, .register-box, .payment-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+
+        .login-box h2, .register-box h2, .payment-box h2 {
+            margin-bottom: 25px;
+            color: #FF6347;
+        }
+
+        .login-box input, .register-box input, .payment-box input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #FF6347;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .login-box button, .register-box button, .payment-box button {
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .login-box button:hover, .register-box button:hover, .payment-box button:hover {
+            background-color: #FF4500;
+        }
+
+        .products {
+            display: none;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 40px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+            margin: 50px auto;
+            width: 90%;
+        }
+
+        .product {
+            background-color: #fff;
+            border: 2px solid #ddd;
+            border-radius: 12px;
+            padding: 15px;
+            width: 220px;
+            text-align: center;
+            margin: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        .product h3 {
+            margin: 15px 0;
+            color: #FF6347;
+        }
+
+        .product p {
+            color: #555;
+            font-size: 16px;
+        }
+
+        .product .price {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .product .price-old {
+            text-decoration: line-through;
+            color: #999;
+            font-size: 16px;
+        }
+
+        .product .discount {
+            background-color: #FF4500;
+            color: white;
+            padding: 5px 10px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 12px;
+            margin-top: 10px;
+        }
+
+        .product button {
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .product button:hover {
+            background-color: #FF4500;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        footer {
+            background-color: rgba(255, 140, 0, 0.9);
+            padding: 10px;
+            text-align: center;
+            color: white;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+    </style>
+</head>
+<body>
+
+   <div class="payment-container" id="payment-container" style="display: none;">
+        <div class="payment-box">
+            <h2>Төлем жасау</h2>
+            <input type="text" id="card-number" placeholder="Карточка номері">
+            <input type="text" id="card-name" placeholder="Аты-жөні">
+            <input type="text" id="amount" placeholder="Сома" readonly>
+            <button onclick="completePurchase()">Төлем жасау</button>
+        </div>
+    </div>
+
+    <section class="products" style="display: flex;">
+        <nav>
+        <a href="coj3.html">Басты бет</a>
+    </nav>
+
+        <div class="product">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcSZFv1VqhKkjLZdms8ew85vgSPloo8sUHiKjs3EDluTLVLCpA81" alt="Тауар 1">
+            <h3>Тауар 1</h3>
+            <p class="price">Бағасы: 5000 тг</p>
+            <button onclick="purchase('Тауар 1', '5000 тг')">Сатып алу</button>
+        </div>
+
+        <div class="product">
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRZF3wbBuxLJJ3ixyhQjgEECrsr32eAGDXqvNdvkHes4Opm9Yqa" alt="Тауар 2">
+            <h3>Тауар 2</h3>
+            <p class="price-old">Бағасы: 7000 тг</p>
+            <p class="price">Жаңа бағасы: 5000 тг</p>
+            <div class="discount">Скидка 28%</div>
+            <button onclick="purchase('Тауар 2', '5000 тг')">Сатып алу</button>
+        </div>
+
+        <div class="product">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6KZNBc5dJhvsEPrkYIE6ACyqSd4NGvKyByHKcuV3PGNX3dK3S" alt="Тауар 3">
+            <h3>Тауар 3</h3>
+            <p class="price">Бағасы: 6000 тг</p>
+            <button onclick="purchase('Тауар 3', '6000 тг')">Сатып алу</button>
+        </div>
+
+        <div class="product">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1YX2_2opBzPmoN6o3srmP6_myUCnL0eS-FwcZKbrDfiIcHSP6" alt="Тауар 4">
+            <h3>Тауар 4</h3>
+            <p class="price-old">Бағасы: 8000 тг</p>
+            <p class="price">Жаңа бағасы: 6000 тг</p>
+            <div class="discount">Скидка 25%</div>
+            <button onclick="purchase('Тауар 4', '6000 тг')">Сатып алу</button>
+        </div>
+
+        <div class="product">
+            <img src="https://encrypted-tbn3.gstatic.com/images?q=tbn:ANd9GcQJLisYU2Nq1rAtK4tH3i8DoOXXwYJ-XG70tVyArOpAeUltY373" alt="Тауар 5">
+            <h3>Тауар 5</h3>
+            <p class="price">Бағасы: 7000 тг</p>
+            <button onclick="purchase('Тауар 5', '7000 тг')">Сатып алу</button>
+        </div>
+
+        <div class="product">
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcQQU56HH5sFCSfxUKtFQp6gSNEcz7VxmKJIZM-3VZMJ8gN3MTan" alt="Тауар 6">
+            <h3>Тауар 6</h3>
+            <p class="price">Бағасы: 10000 тг</p>
+            <button onclick="purchase('Тауар 6', '10000 тг')">Сатып алу</button>
+        </div>
+
+        <div class="product">
+            <img src="https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcRFf0LRJcnHmuKqzg93WciLmG3f-uAxgBlWn91eq_HVZpPXegSk" alt="Тауар 7">
+            <h3>Тауар 7</h3>
+            <p class="price">Бағасы: 11000 тг</p>
+            <button onclick="purchase('Тауар 7', '11000 тг')">Сатып алу</button>
+        </div>
+
+    </section>
+
+    <footer>
+         <p>Байланыс ақпарат: nurdaulet@gmail.com | +7 (776) 826-89-22</p>
+        <p>&copy; 2024 NRB shop</p>
+    </footer>
+
+    <script>
+     let currentProduct = ''; // Ағымдағы тауар
+
+        function purchase(productName, productPrice) {
+            currentProduct = productName;
+            document.getElementById('amount').value = productPrice;
+            document.querySelector('.products').style.display = 'none';
+            document.getElementById('payment-container').style.display = 'flex';
+        }
+
+        function completePurchase() {
+            const cardNumber = document.getElementById('card-number').value;
+            const cardName = document.getElementById('card-name').value;
+
+            if (!cardNumber || !cardName) {
+                alert('Барлық өрістерді толтырыңыз!');
+                return;
+            }
+
+            alert(`Рахмет, ${cardName}! Сіздің сатып алуыңыз (${currentProduct}) сәтті аяқталды.`);
+            document.getElementById('payment-container').style.display = 'none';
+            document.querySelector('.products').style.display = 'flex';
+        }
+    </script> 
+</body>
+</html>

@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="kk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Люкс Тауарлар</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f9f9f9;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        .luxury-header {
+            text-align: center;
+            padding: 20px;
+            background-color: #333;
+            color: #fff;
+        }
+
+        .luxury-header h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
+        }
+         nav {
+            text-align: center;
+            margin: 20px 0;
+        }
+
+        nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    font-size: 18px;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+        nav a:hover {
+            text-align: center;
+            text-decoration: underline;
+        }
+.login-container, .payment-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: rgba(0, 0, 0, 0.5);
+            background-image: url('https://via.placeholder.com/1500x900');
+            background-size: cover;
+            background-position: center;
+        }
+
+        .login-box, .register-box, .payment-box {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 350px;
+        }
+
+        .login-box h2, .register-box h2, .payment-box h2 {
+            margin-bottom: 25px;
+            color: #FF6347;
+        }
+
+        .login-box input, .register-box input, .payment-box input {
+            width: 100%;
+            padding: 15px;
+            margin: 10px 0;
+            border: 2px solid #FF6347;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .login-box button, .register-box button, .payment-box button {
+            background-color: #FF6347;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            cursor: pointer;
+            width: 100%;
+            border-radius: 8px;
+            font-size: 18px;
+            font-weight: bold;
+            transition: background 0.3s;
+        }
+
+        .login-box button:hover, .register-box button:hover, .payment-box button:hover {
+            background-color: #FF4500;
+        }
+        .luxury-products {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            padding: 40px;
+            background-color: #fff;
+        }
+
+        .luxury-product {
+            background-color: #fdfdfd;
+            border: 1px solid #ddd;
+            border-radius: 12px;
+            width: 300px;
+            margin: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .luxury-product img {
+            width: 100%;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .luxury-product h2 {
+            font-size: 22px;
+            color: #333;
+            margin: 15px;
+        }
+
+        .luxury-product p {
+            font-size: 18px;
+            color: #666;
+            margin: 10px 15px;
+        }
+
+        .luxury-product .price {
+            font-size: 20px;
+            color: #e67e22;
+            font-weight: bold;
+            margin: 15px;
+        }
+
+        .luxury-product button {
+            background-color: #e67e22;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin: 20px 15px;
+            cursor: pointer;
+            border-radius: 8px;
+            font-size: 16px;
+            transition: background-color 0.3s ease;
+        }
+
+        .luxury-product button:hover {
+            background-color: #d35400;
+        }
+
+        .luxury-product:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="payment-container" id="payment-container" style="display: none;">
+        <div class="payment-box">
+            <h2>Төлем жасау</h2>
+            <input type="text" id="card-number" placeholder="Карточка номері">
+            <input type="text" id="card-name" placeholder="Аты-жөні">
+            <input type="text" id="amount" placeholder="Сома" readonly>
+            <button onclick="completePurchase()">Төлем жасау</button>
+        </div>
+    </div>
+    <div class="luxury-header">
+        <h1>Люкс Тауарлар</h1>
+        <p>Сапалы және сәнді өнімдер</p>
+    </div>
+     <nav>
+        <a href="coj3.html">Басты бет</a>
+        <a href="womens_clothing.html">Әйелдер киімі</a>
+        <a href="mens_clothing.html">Ерлер киімі</a>
+    </nav>
+    <section class="luxury-products">
+        <div class="luxury-product">
+            <img src="https://media.gucci.com/style/White_South_0_160_316x316/1712254549/794178_AACZS_1000_002_100_0000_Light.jpg" alt="Люкс Тауар 1">
+            <h2>Люкс туфли</h2>
+            <p>Жоғары сапалы люкс өнім</p>
+            <p class="price">Бағасы: 150,000 тг</p>
+            <button>Сатып алу</button>
+        </div>
+        <div class="luxury-product">
+            <img src="https://rostov.mazaltovman.ru/wa-data/public/shop/products/87/01/187/images/6204/6204.742x0@2x.jpg" alt="Люкс Тауар 2">
+            <h2>Люкс костюм </h2>
+            <p>Ерекше дизайн және сапа</p>
+            <p class="price">Бағасы: 200,000 тг</p>
+            <button>Сатып алу</button>
+        </div>
+        <div class="luxury-product">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvHzQalA4QGG6LkxYuX3RTKgWIukl9PmmWCg&s" alt="Люкс Тауар 3">
+            <h2>Стильді туфли</h2>
+            <p>Айрықша сәнді стиль</p>
+            <p class="price">Бағасы: 180,000 тг</p>
+            <button>Сатып алу</button>
+        </div>
+        <div class="luxury-product">
+            <img src="https://budless.shop/wp-content/uploads/2024/03/img_2963-819x1024.jpg" alt="Люкс Тауар 4">
+            <h2>Костюм от gucci</h2>
+            <p>Заманауи технологиялармен жасалған</p>
+            <p class="price">Бағасы: 220,000 тг</p>
+            <button>Сатып алу</button>
+        </div>
+        <div class="luxury-product">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTnq-81z35XxLc7ev1dIl02G3Ao4VQsZLI3Uw&s" alt="Люкс Тауар 5">
+            <h2>Сапалы костюм</h2>
+            <p>Сәнді және берік материалдар</p>
+            <p class="price">Бағасы: 170,000 тг</p>
+            <button>Сатып алу</button>
+        </div>
+        <div class="luxury-product">
+            <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTAT9Oa5hn-TGE3Tnid8Wpy2LSKcrJdi4emzrwq3gdar2Rekbr6NqvB-ofpQGJ6-QeMnt8&usqp=CAU" alt="Люкс Тауар 6">
+            <h2>Белые костюмы</h2>
+            <p>Әлемдік деңгейдегі премиум сапа</p>
+            <p class="price">Бағасы: 250,000 тг</p>
+            <button>Сатып алу</button>
+        </div>
+         <div class="luxury-product">
+            <img src="https://i.shoes.ua/n/2016/tsvet_muzhskoy_obuvi_pod_kostyum_1.jpg" alt="Люкс Тауар 6">
+            <h2>Полный комлектация</h2>
+            <p>Әлемдік деңгейдегі премиум сапа</p>
+            <p class="price">Бағасы: 250,000 тг</p>
+            <button>Сатып алу</button>
+        </div>
+    </section>
+    
+    <script>
+     let currentProduct = ''; 
+
+        function purchase(productName, productPrice) {
+            currentProduct = productName;
+            document.getElementById('amount').value = productPrice;
+            document.querySelector('.luxury-products').style.display = 'none';
+            document.getElementById('payment-container').style.display = 'flex';
+        }
+
+        function completePurchase() {
+            const cardNumber = document.getElementById('card-number').value;
+            const cardName = document.getElementById('card-name').value;
+
+            if (!cardNumber || !cardName) {
+                alert('Барлық өрістерді толтырыңыз!');
+                return;
+            }
+
+            alert(`Рахмет, ${cardName}! Сіздің сатып алуыңыз (${currentProduct}) сәтті аяқталды.`);
+            document.getElementById('payment-container').style.display = 'none';
+            document.querySelector('.luxury-products').style.display = 'flex';
+        }
+    </script>
+
+</body>
+</html>
+
